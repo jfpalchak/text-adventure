@@ -1,8 +1,8 @@
-# _{Application Name}_
+# _Text Adventure_
 
-#### By _**Joey Palchak**_
+#### By _**Joey Palchak, Jonathan Cheng, Jeremy Josol, Onur Kaymak, Jake Elsberry**_
 
-#### _{Brief description of application}_
+#### _{Create an adventure for the user to experience}_
 
 ## Technologies Used
 
@@ -79,4 +79,4 @@ $ npm run start
 
 MIT License
 
-Copyright (c) _date_ _Joey Palchak_
+Copyright (c) _date_ _Joey Palchak, Jonathan Cheng, Jeremy Josol, Onur Kaymak, Jake Elsberry_
