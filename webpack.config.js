@@ -20,7 +20,7 @@ module.exports = {
       verbose: true
     }),
     new HtmlWebpackPlugin({
-      title: 'Template',
+      title: 'Text Adventure',
       template: './src/index.html',
       inject: 'body'
     }),

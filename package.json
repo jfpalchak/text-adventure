@@ -1,9 +1,9 @@
 {
-  "name": "project-name",
+  "name": "text-adventure",
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jfpalchak/{REPONAME}.git"
+    "url": "git+https://github.com/jfpalchak/text-adventure.git"
   },
   "description": "",
   "main": "index.js",
@@ -19,9 +19,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jfpalchak/template-repo/issues"
+    "url": "https://github.com/jfpalchak/text-adventure/issues"
   },
-  "homepage": "https://github.com/jfpalchak/template-repo#readme",
+  "homepage": "https://github.com/jfpalchak/text-adventure#readme",
   "devDependencies": {
     "@babel/core": "^7.18.6",
     "@babel/plugin-transform-modules-commonjs": "^7.18.6",
