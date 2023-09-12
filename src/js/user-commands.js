@@ -10,13 +10,28 @@ import Adventure from './adventure.js';
 
 
 
+
+function lookForItem(searchForThisThing) {
+  // return Adventure.getPlayerLocation().items[0];
+  //return 'key';
+  if (Adventure.getPlayerLocation().items.includes(searchForThisThing)) {
+    Adventure.player.grab(searchForThisThing);
+    printGeneric(`You grabbed the ${searchForThisThing}!`);
+  } else {
+    printGeneric(`Sorry, couldn't find ${searchForThisThing}.`);
+  }
+}
+
+// handleUserCommand for rooms: 1
 export function handleUserCommand(userInput) {
   
   let item;
   let hint;
 
-  // userInput = userInput.toLowerCase();
-  // function for Room 1
+  //basic basic solution to separating user input?
+  let inputArray = userInput.split(" ");
+  let command = inputArray[0];
+  item = inputArray[1];
 
   switch (userInput) {
     case 'hint':
@@ -26,10 +41,9 @@ export function handleUserCommand(userInput) {
     case 'look around':
       printDetailedDescription();
       break;
-    case 'grab':
-      item = Adventure.getPlayerLocation().items[0];
-      Adventure.player.grab(item);
-      printGeneric(`You grabbed the ${item}!`);
+    case `grab ${item}`:
+      lookForItem(item);
+      // printGeneric(`You grabbed the ${item}!`);
       break;
     case 'unlock':
       Adventure.getPlayerLocation().doorLocked = false;
@@ -42,6 +56,8 @@ export function handleUserCommand(userInput) {
       } else {
         Adventure.player.move();
         printGeneric("You open the door and walk through.");
+        // Introduce next room:
+        printGeneric(Adventure.getPlayerLocation().description);
       }
       break;
     default:
