@@ -2,6 +2,20 @@ body {
   background-color: #121212;
   color: white;
   font-size: larger;
+  font-family: 'Jolly Lodger', cursive;
+}
+
+.container {
+  /* margin: auto;
+  margin-top: 250px;
+  width: 500px; */
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  align-items: center;
 }
 
 .display-room {
@@ -15,8 +29,24 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 #player-entered-text {
   margin: auto;
 }
+
+h1 {
+  font-size: 100px;
+  text-align: center;
+}
+
+input#player-entered-text {
+  height: 40px;
+  width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ 

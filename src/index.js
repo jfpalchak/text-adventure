@@ -1,5 +1,5 @@
-// import 'bootstrap';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import Adventure from './js/adventure.js';
 import { handleUserCommand } from './js/user-commands.js';
@@ -20,7 +20,7 @@ export function printGeneric(text) {
 // User Interface Logic
 function userInputSubmissionHandler(event) {
   event.preventDefault();
-  let userInput = document.getElementById("player-entered-text").value.toLowerCase();
+  let userInput = document.getElementById("player-entered-text").value.toLowerCase().trim();
   document.getElementById("player-entered-text").value = null;
   
   // Method call to pass in user's 'userInput' to interact with room

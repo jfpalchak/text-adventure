@@ -4,24 +4,32 @@ export default class Dungeon {
       1: {
         description: "You find yourself in a room that is dimly lit, with little furnishing. Ahead you see a heavy-set door.",
         detailedDescription: "In the corner of the room, you see a small table, on top of which lies a brass key.",
-        items: ["Key"],
-        hint: "Command reference: look around, grab, unlock, use door.",
+        items: ["key"],
+        hint: "look around, grab, unlock, use door.",
         doorLocked: true,
         doors: {
-          north: "room2"
+          north: 2
         }
       },
       2: {
-        description: "As the heavy-set door slams behind you, the sound of rushing water overwhelms you. Proceed towards the flood or turn around?",
-        detailedDescription: "As you rush towards the water, it feels as though the H20 is quite refreshing and you gain 10 hp(maybe)",
-        items: ["plate of armor", "shrinking potion"],
-        hint: "Command reference: look around, grab, use door.",
-        doorLocked: false,
+        description: "As the heavy-set door slams behind, you step into knee-deep water. Once again you see a door ahead of you, however, you're surrounded by a scattering of items floating about the room.",
+        detailedDescription: "As you look around, you see a suit of armor and shrinking potion.",
+        items: ["suit of armor", "shrinking potion"],
+        hint: "look around, grab, use door.",
+        doorLocked: true,
         doors: {
-          south: "room1"
+          south: 1
         }
-      }
-    }
+      },
+      // 3: {
+      //   description: "",
+      //   detailedDescription: "",
+      //   items: [],
+      //   hint: "",
+      //   doorLocked: true,
+      //   doors: {}
+      // }
+    };
   }
   addRoom(roomId, description, details, items, hint) {
     this.rooms[roomId] = {
