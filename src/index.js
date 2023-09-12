@@ -1,62 +1,37 @@
 // import 'bootstrap';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import './css/styles.css';
-// import {} from './js/utility.js';
-import Character from './js/character.js';
-import Dungeon from './js/dungeon.js';
+import Adventure from './js/adventure.js';
+import { handleUserCommand } from './js/user-commands.js';
 
-// Utility Logic
+// Display detailed description of player's current room, given the "look around" command
+export function printDetailedDescription() {
+  let room = Adventure.player.currentLocation;
+  document.querySelector(".display-to-user").innerText = Adventure.dungeon.rooms[room].detailedDescription;
+}
 
-function handleUserCommand(userInput) {
-
-  if (userInput === "look around"){
-    let currentRoom = Dungeon.rooms[player.currentLocation];
-    roomLoader(currentRoom);
-  }
+export function printGeneric(text) {
+  document.querySelector(".display-to-user").innerText = text;
 }
 
 // User Interface Logic
 function userInputSubmissionHandler(event) {
   event.preventDefault();
   let userInput = document.getElementById("player-entered-text").value;
-  document.getElementById("player-entered-text").innerHTML = null;
-  // Method call to pass in user's 'userInput' to interact with room
-
-  // handleUserCommand(userInput);
-}
-
-function roomLoader(room) {
-  document.getElementById(".display-to-user").innerText = room.description;
-}
-
-function userInputFormLoader() {
+  document.getElementById("player-entered-text").value = null;
   
-  let userForm = document.querySelector(".user-input");
-  userForm.addEventListener("submit", userInputSubmissionHandler);
+  // Method call to pass in user's 'userInput' to interact with room
+  handleUserCommand(userInput);
 }
 
 window.addEventListener("load", function () {
-  let player = new Character("Player");
-  userInputFormLoader();
-  roomLoader();
+  
+  Adventure.newGame();
+  document.querySelector(".display-room").innerText = Adventure.dungeon.rooms["room1"].description;
+  // greet the player
+  // print first room info
+
+  // Listen for player command input:
+  document.querySelector(".user-input").addEventListener("submit", userInputSubmissionHandler);
+
 });
-
-
-
-// window.addEventListener("load", handleEverything);
-//
-// handleEverything() {
-//   let player = new Character("Player");
-
-//   // greet the player
-//   // print the first room description
-//   // 
-
-//   // if we keep the event listener as an anonymous function, we have access to player
-//   document.querySelector(".user-input").addEventListener( (event) => {
-//     event.preventDefault();
-//     // get user input
-//     // handleUserCommands(userInput, player); // depending on actions, this updates the Character/Player/User
-//   });
-
-// }

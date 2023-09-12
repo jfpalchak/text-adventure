@@ -2,7 +2,7 @@
 
 #### By _**Joey Palchak, Jonathan Cheng, Jeremy Josol, Onur Kaymak, Jake Elsberry**_
 
-#### _{Create an adventure for the user to experience}_
+#### _A text-based adventure game, where the user navigates and interacts with the world via text input._
 
 ## Technologies Used
 
