@@ -11,19 +11,36 @@ import Adventure from './adventure.js';
 
 
 export function handleUserCommand(userInput) {
-  // let userInput = document.getElementById("player-entered-text").value;
+  
+  let item;
+
   switch (userInput) {
+    // case 'hint':
+    //   hint = Adventure.dungeon.rooms["room1"].hint;
+    //   break;
     case 'look around':
       printDetailedDescription();
       break;
     case 'grab':
-      printGeneric("Grab something.");
+      item = Adventure.getPlayerLocation().items[0];
+      Adventure.player.grab(item);
+      printGeneric(`You grabbed the ${item}!`);
       break;
     case 'unlock':
-      printGeneric("Unlock the door.");
+      Adventure.getPlayerLocation().doorLocked = false;
+      Adventure.player.inventory.pop();
+      printGeneric("you unlocked the door.");
+      break;
+    case 'use door':
+      if (Adventure.getPlayerLocation().doorLocked) {
+        printGeneric("The door is locked.");        
+      } else {
+        Adventure.player.move("room2");
+        printGeneric("You open the door and walk through.");
+      }
       break;
     default:
-      printGeneric("Something bad.");
+      printGeneric("I don't recognize that.");
   }
 }
 

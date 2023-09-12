@@ -6,4 +6,9 @@ export default class Adventure {
     this.player = new Character("Player");
     this.dungeon = new Dungeon();
   }
+
+  static getPlayerLocation() {
+    let room = this.player.currentLocation;
+    return this.dungeon.rooms[room];
+  }
 }

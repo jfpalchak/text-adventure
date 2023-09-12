@@ -1,3 +1,22 @@
 body {
   background-color: #121212;
+  color: white;
+  font-size: larger;
+}
+
+.display-room {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.display-to-user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#player-entered-text {
+  margin: auto;
 }

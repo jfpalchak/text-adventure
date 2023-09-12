@@ -6,6 +6,7 @@ export default class Dungeon {
         detailedDescription: "In the corner of the room, you see a small table, on top of which lies a brass key.",
         items: ["Key"],
         hint: "On close inspection, it may be useful to pick something up...",
+        doorLocked: true,
         doors: {
           north: "room2"
         }
@@ -15,6 +16,7 @@ export default class Dungeon {
         detailedDescription: "As you rush towards the water, it feels as though the H20 is quite refreshing and you gain 10 hp(maybe)",
         items: ["A plate of armor", "shrinking potion"],
         hint: "Think sewer grates - thanks Jon",
+        doorLocked: false,
         doors: {
           south: "room1"
         }
