@@ -13,11 +13,16 @@ import Adventure from './adventure.js';
 export function handleUserCommand(userInput) {
   
   let item;
+  let hint;
+
+  // userInput = userInput.toLowerCase();
+  // function for Room 1
 
   switch (userInput) {
-    // case 'hint':
-    //   hint = Adventure.dungeon.rooms["room1"].hint;
-    //   break;
+    case 'hint':
+      hint = Adventure.getPlayerLocation().hint;
+      printGeneric(`${hint}`);
+      break;
     case 'look around':
       printDetailedDescription();
       break;
@@ -29,13 +34,13 @@ export function handleUserCommand(userInput) {
     case 'unlock':
       Adventure.getPlayerLocation().doorLocked = false;
       Adventure.player.inventory.pop();
-      printGeneric("you unlocked the door.");
+      printGeneric("You unlocked the door.");
       break;
     case 'use door':
       if (Adventure.getPlayerLocation().doorLocked) {
-        printGeneric("The door is locked.");        
+        printGeneric("The door is locked, you might want to unlock the door first.");        
       } else {
-        Adventure.player.move("room2");
+        Adventure.player.move();
         printGeneric("You open the door and walk through.");
       }
       break;

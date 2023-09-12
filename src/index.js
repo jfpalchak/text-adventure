@@ -20,7 +20,7 @@ export function printGeneric(text) {
 // User Interface Logic
 function userInputSubmissionHandler(event) {
   event.preventDefault();
-  let userInput = document.getElementById("player-entered-text").value;
+  let userInput = document.getElementById("player-entered-text").value.toLowerCase();
   document.getElementById("player-entered-text").value = null;
   
   // Method call to pass in user's 'userInput' to interact with room
@@ -31,7 +31,7 @@ window.addEventListener("load", function () {
   
   Adventure.newGame();
   // document.querySelector(".display-room").innerText = Adventure.dungeon.rooms["room1"].description;
-  printGeneric(Adventure.dungeon.rooms["room1"].description);
+  printGeneric(Adventure.getPlayerLocation().description);
   // greet the player
   // print first room info
 

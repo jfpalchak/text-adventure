@@ -2,16 +2,19 @@ export default class Character {
   constructor(playerName) {
     this.name = playerName;
     this.inventory = [];
-    this.currentLocation = "room1"; // acting as an id attached to each room 
+    this.currentLocation = 1; // acting as an id attached to each room 
   }
 
   grab(item) {
     this.inventory.push(item);
   }
 
-  move(roomId) {
-    this.currentLocation = roomId;
+  move() {
+    this.currentLocation += 1;
   }
+
+  // moveBack(){
+  //   this.currentLocation 
 }
 
 
