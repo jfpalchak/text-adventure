@@ -11,9 +11,10 @@ export function printDetailedDescription() {
   printGeneric(Adventure.dungeon.rooms[room].detailedDescription);
 }
 
+// Print output messages
 export function printGeneric(text) {
   let pTag = document.createElement('p');
-  pTag.append(text);
+  pTag.innerHTML = text;
   document.querySelector(".display-to-user").append(pTag);
 }
 
@@ -22,6 +23,9 @@ function userInputSubmissionHandler(event) {
   event.preventDefault();
   let userInput = document.getElementById("player-entered-text").value.toLowerCase().trim();
   document.getElementById("player-entered-text").value = null;
+
+  // Print user input to DOM
+  printGeneric(`<span class="user-input"> > ${userInput}</span>`);
   
   // Method call to pass in user's 'userInput' to interact with room
   handleUserCommand(userInput);
