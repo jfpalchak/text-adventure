@@ -1,5 +1,8 @@
 import { printDetailedDescription, printGeneric, printHint } from "./../index.js";
-import { lookForItem, handleUnlockDoor, handleUseDoor, handlePullLever } from "./interactions.js";
+import { lookForItem, handleUnlockDoor, handleUseDoor, handlePullLever, handleOpenChest, handleAttack } from "./interactions.js";
+// !!!!!!!!! TAKE OUT AFTER TESTING !!!!!!!!!!
+import Adventure from "./adventure.js";
+// !!!!!!!!! TAKE OUT AFTER TESTING !!!!!!!!!!
 
 // Utility Logic
 export function parseUserInput(userInput) {
@@ -21,7 +24,7 @@ export function handleUserCommand(userInput) {
     case "look around":
       printDetailedDescription();
       break;
-    case `grab ${item}`: // TOFIX: player can infinitely grab items from the room -> remove item from room inventory when grabbed
+    case `grab ${item}`:
       lookForItem(item);
       break;
     case "unlock door":
@@ -33,6 +36,23 @@ export function handleUserCommand(userInput) {
     case "pull lever":
       handlePullLever();
       break;
+    case "open treasure chest":
+      handleOpenChest();
+      break;
+    case "attack":
+      handleAttack();
+      break;
+    // !!!!!!!!!!! DEV CHEAT START !!!!!!!!!
+    case "room 3":
+      Adventure.player.currentLocation = 3;
+      break;
+    case "room 4":
+      Adventure.player.currentLocation = 4;
+      break;
+    case "kill player":
+      Adventure.dungeon.rooms[4].battle.playerHealth = 1;
+      break;
+    // !!!!!!!!!!! DEV CHEAT END !!!!!!!!!!!
     default:
       printGeneric("I don't recognize that.");
   }

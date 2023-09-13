@@ -6,15 +6,17 @@ import { handleUserCommand } from "./js/user-commands.js";
 
 // Display detailed description of player's current room, given the "look around" command
 export function printDetailedDescription() {
-  let room = Adventure.player.currentLocation;
+  // let room = Adventure.player.currentLocation;
   // document.querySelector(".display-to-user").innerText = Adventure.dungeon.rooms[room].detailedDescription;
-  printGeneric(Adventure.dungeon.rooms[room].detailedDescription);
+  printGeneric(Adventure.getPlayerLocation().detailedDescription);
 }
 
 // Print output messages
 export function printGeneric(text) {
   let pTag = document.createElement("p");
   pTag.innerHTML = text;
+  // document.getElementById("anchor").append(pTag);
+  // document.getElementById("scroller").append(pTag);
   document.querySelector(".display-to-user").append(pTag);
 }
 
@@ -39,11 +41,7 @@ function userInputSubmissionHandler(event) {
 
 window.addEventListener("load", function () {
   Adventure.newGame();
-  // document.querySelector(".display-room").innerText = Adventure.dungeon.rooms["room1"].description;
   printGeneric(Adventure.getPlayerLocation().description);
-  // greet the player
-  // print first room info
-
   // Listen for player command input:
   document.querySelector(".user-input").addEventListener("submit", userInputSubmissionHandler);
 });

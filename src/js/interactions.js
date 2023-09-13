@@ -2,7 +2,9 @@ import Adventure from "./adventure.js";
 import { printGeneric } from "../index.js";
 
 export function lookForItem(thatItem) {
-  if (thatItem === "lever") {
+  if (Adventure.getPlayerLocation().items.includes("treasure chest") && thatItem === "treasure chest") {
+    printGeneric(`The treasure chest is too heavy to carry around.`);
+  } else if (Adventure.getPlayerLocation().items.includes("lever") && thatItem === "lever") {
     printGeneric(`The lever is firmly attached.`);
   } else if (Adventure.getPlayerLocation().items.includes(thatItem) && Adventure.player.inventory.includes(thatItem)) {
     printGeneric(`You already have the ${thatItem}.`);
@@ -41,9 +43,8 @@ export function handleUseDoor() {
 
 export function handlePullLever() {
   if (Adventure.getPlayerLocation().items.includes("lever")) {
-    // TOFIX: player can "grab" the lever and put in inventory
     Adventure.getPlayerLocation().items.pop();
-    Adventure.getPlayerLocation().doorAccessible = true; // we change boolean value for door accessibility
+    Adventure.getPlayerLocation().doorAccessible = true;
     printGeneric(
       "With effort, you pull the lever down. You hear a click behind the door ahead, and the sounds of a mechanism turning. The water in the room begins to drain, and by your feet you see a beautiful suit of armor."
     );
@@ -51,5 +52,63 @@ export function handlePullLever() {
     printGeneric("You've already pulled the lever.");
   } else {
     printGeneric("There is no lever to pull.");
+  }
+}
+
+export function handleOpenChest() {
+  if (Adventure.getPlayerLocation().items.includes("treasure chest")) {
+    printGeneric("The treasure chest is locked.");
+  }
+}
+
+// Return random number, either 0 or 1
+function rollForChance() {
+  return Math.floor(Math.random() * 2);
+}
+
+// Handle battle logic between player and monster
+export function handleAttack() {
+  if (!Adventure.getPlayerLocation().battle) {
+    printGeneric("Your bloodlust clears. There is nothing to attack.");
+    return null;
+  }
+
+  // randomly return either 0 or 1
+  let chance = rollForChance();
+  let string;
+
+  // player attack
+  if (chance) {
+    // if 1, attack hits
+    Adventure.getPlayerLocation().battle.monsterHealth -= 1;
+    string = "You hit the monster!";
+  } else {
+    // if 0, attack misses
+    string = "Your attack misses!";
+  }
+
+  // monster attacks
+  chance = rollForChance();
+  if (chance) {
+    Adventure.getPlayerLocation().battle.playerHealth -= 1;
+    string += " In retaliation, the monster hits you!";
+  } else {
+    string += " The monster's attack misses!";
+  }
+
+  printGeneric(string);
+
+  handleWinOrLose();
+}
+
+// handle checking if player or monster has been defeated
+function handleWinOrLose() {
+  if (Adventure.getPlayerLocation().battle.playerHealth === 0) {
+    printGeneric("The monster lands a fatal blow. Your strength leaves you. The Dungeon has won.");
+    printGeneric("<h4>Game Over</h4>");
+    // ! Display some kind of reset button?
+  } else if (Adventure.getPlayerLocation().battle.monsterHealth === 0) {
+    Adventure.getPlayerLocation().doorAccessible = true;
+    printGeneric("You land one final blow on the monster, and it falls to your feet. The path ahead is clear.");
   }
 }

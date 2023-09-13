@@ -11,15 +11,22 @@
   <body>
     <div class="container">
       <h1>RPG Adventure</h1>
-      <!-- User input -->
       <form class="user-input">
         <label for="player-entered-text">
           <input id="player-entered-text" name="player-entered-text" type="text" required />
         </label>
       </form>
+      <!-- User input -->
+      <!-- <form class="user-input">
+        <label for="player-entered-text">
+          <input id="player-entered-text" name="player-entered-text" type="text" required />
+        </label>
+      </form> -->
       <!-- Game output -->
       <div class="display-room"></div>
-      <div class="display-to-user"></div>
+      <div class="display-to-user" id="scroller">
+        <!-- <div id="anchor"></div> -->
+      </div>
       <div class="hint-output"></div>
     </div>
   </body>

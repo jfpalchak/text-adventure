@@ -30,7 +30,21 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
+  /* overflow-anchor: none; */
+  height: 30%;
+  width: 70%;
+  background-color: rgba(60, 60, 70, 0.5);
 }
+
+/* #scroller * {
+  overflow-anchor: none;
+  background-color: #6f737840;
+}
+
+#anchor {
+  overflow-anchor: auto;
+  height: 1px;
+} */
 
 #player-entered-text {
   margin: auto;
@@ -47,4 +61,9 @@ input#player-entered-text {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.user-input {
+  color: green;
+  font-weight: 700;
 }

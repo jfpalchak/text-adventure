@@ -18,7 +18,7 @@ export default class Dungeon {
         detailedDescription:
           "As you wade through the water, you notice the glint of metal by your feet, while a vial labeled 'shrinking potion' floats beside you. You see a lever on the wall.",
         items: ["suit of armor", "shrinking potion", "lever"],
-        hint: "look around, pull lever, use door.",
+        hint: "look around, pull, use door.",
         doorAccessible: false,
         doorLocked: false,
         doors: {
@@ -28,11 +28,11 @@ export default class Dungeon {
       },
       3: {
         description:
-          "You stumble into the third room to find the welcome warmth of a lit torch to either side. There are clear signs of something being here before us... but what is it? The air is thick with an unsettling silence.",
+          "You stumble into another room to find the welcoming warmth of a lit torch to either side. There is sand beneath your feet, showing clear signs of something being here before us... but what is it? The air is thick with an unsettling silence.",
         detailedDescription:
-          "Struggling through the cobwebs, a loud noise clatters. You tripped over a rusty sword. Hint available items. You can hear what seems to be the sound of metal against stone, coming from behind the door.",
-        items: ["rusty sword", "bag of sand", "treasure chest", ""],
-        hint: "",
+          "Struggling through the cobwebs, you pass by a treasure chest and a loud noise clatters. You tripped over sand and have fallen by a rusty sword. Ahead, you hear what seems to be the sound of metal against stone, coming from behind the door.",
+        items: ["rusty sword", "sand", "treasure chest", "treasure chest key"],
+        hint: "look around, grab, open, use door",
         doorAccessible: false,
         doorLocked: true,
         doors: {
@@ -42,16 +42,15 @@ export default class Dungeon {
       },
       4: {
         description: "This is where the final boss lives. User can choose to fight or escape based on user items.",
-        detailedDescription: "",
+        detailedDescription: "Fee-fi-fo-fum, I smell the blood of an Englishman; Be he alive, or be he dead, I'll grind his bones to make my bread.",
         items: [],
         hint: "",
         doorAccessible: false,
         doorLocked: false,
         doors: {},
-        monster: {
-          // WHAT IF
-          alive: true,
-          health: 4,
+        battle: {
+          monsterHealth: 4,
+          playerHealth: 4,
         },
       },
     };
