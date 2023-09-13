@@ -2,7 +2,7 @@ body {
   background-color: #121212;
   color: white;
   font-size: larger;
-  font-family: 'Jolly Lodger', cursive;
+  /* font-family: 'Jolly Lodger', cursive; */
 }
 
 .container {
@@ -48,5 +48,3 @@ input#player-entered-text {
   justify-content: center;
   align-items: center;
 }
-
- 
