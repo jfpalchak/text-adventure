@@ -1,8 +1,8 @@
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './css/styles.css';
-import Adventure from './js/adventure.js';
-import { handleUserCommand } from './js/user-commands.js';
+import "bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./css/styles.css";
+import Adventure from "./js/adventure.js";
+import { handleUserCommand } from "./js/user-commands.js";
 
 // Display detailed description of player's current room, given the "look around" command
 export function printDetailedDescription() {
@@ -13,9 +13,15 @@ export function printDetailedDescription() {
 
 // Print output messages
 export function printGeneric(text) {
-  let pTag = document.createElement('p');
+  let pTag = document.createElement("p");
   pTag.innerHTML = text;
   document.querySelector(".display-to-user").append(pTag);
+}
+
+export function printHint() {
+  let pTag = document.createElement("p");
+  pTag.append(Adventure.getPlayerLocation().hint);
+  document.querySelector(".hint-output").append(pTag);
 }
 
 // User Interface Logic
@@ -26,13 +32,12 @@ function userInputSubmissionHandler(event) {
 
   // Print user input to DOM
   printGeneric(`<span class="user-input"> > ${userInput}</span>`);
-  
+
   // Method call to pass in user's 'userInput' to interact with room
   handleUserCommand(userInput);
 }
 
 window.addEventListener("load", function () {
-  
   Adventure.newGame();
   // document.querySelector(".display-room").innerText = Adventure.dungeon.rooms["room1"].description;
   printGeneric(Adventure.getPlayerLocation().description);
@@ -41,5 +46,4 @@ window.addEventListener("load", function () {
 
   // Listen for player command input:
   document.querySelector(".user-input").addEventListener("submit", userInputSubmissionHandler);
-
 });
