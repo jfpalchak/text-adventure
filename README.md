@@ -81,7 +81,8 @@ $ npm run start
 
 ## Known Bugs
 
-- _No known bugs at this time. If any bugs are discovered, please contact the author._
+- Not all rooms have alternate 'detailedDescription' properties, when user alters a room.
+- If any bugs are discovered, please contact the author.
 
 ## License
 

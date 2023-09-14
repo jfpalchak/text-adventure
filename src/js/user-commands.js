@@ -9,9 +9,9 @@ import {
   handleUseItem,
   handleNewGame,
 } from "./interactions.js";
-// !!!!!!!!! TAKE OUT AFTER TESTING !!!!!!!!!!
+// !!!!!!!!! DEV CHEAT !!!!!!!!!!
 import Adventure from "./adventure.js";
-// !!!!!!!!! TAKE OUT AFTER TESTING !!!!!!!!!!
+// !!!!!!!!! DEV CHEAT !!!!!!!!!!
 
 // Utility Logic
 export function parseUserInput(userInput) {
@@ -21,7 +21,7 @@ export function parseUserInput(userInput) {
   return targetObject;
 }
 
-// handleUserCommand for rooms: 1
+// handle all user commands
 export function handleUserCommand(userInput) {
   let targetItem = parseUserInput(userInput);
 

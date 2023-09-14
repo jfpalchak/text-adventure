@@ -2,7 +2,7 @@ export default class Character {
   constructor(playerName) {
     this.name = playerName;
     this.inventory = [];
-    this.currentLocation = 1; // acting as an id attached to each room
+    this.currentLocation = 1;
   }
 
   grab(item) {
@@ -13,7 +13,3 @@ export default class Character {
     this.currentLocation += 1;
   }
 }
-
-// WIP functions:
-// moveBack(){
-//   this.currentLocation -= 1;

@@ -47,10 +47,10 @@ export function handleUseDoor() {
     printGeneric(`You open the door and walk through.`);
     // Introduce next room:
     printGeneric(Adventure.getPlayerLocation().description);
+    // Check if player has won:
     if (Adventure.getPlayerLocation().winFlag) {
       printGeneric("<h4 class='olive'>You've Defeated the Dungeon!</h4>");
     }
-    // Check if player has won:
   }
 }
 
@@ -143,7 +143,6 @@ function handleWinOrLose() {
   } else if (Adventure.getPlayerLocation().battle.playerHealth <= 0) {
     printGeneric("The monster lands a fatal blow. Your strength leaves you. The Dungeon has won.");
     printGeneric("<h4 class='red'>Game Over</h4>");
-    // ! Display some kind of reset button?
   } else if (Adventure.getPlayerLocation().battle.monsterHealth <= 0) {
     Adventure.getPlayerLocation().doorAccessible = true;
     printGeneric("You land one final blow on the monster, and it falls to your feet. The path ahead is clear.");
