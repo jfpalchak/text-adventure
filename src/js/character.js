@@ -12,7 +12,8 @@ export default class Character {
   move() {
     this.currentLocation += 1;
   }
-
-  // moveBack(){
-  //   this.currentLocation
 }
+
+// WIP functions:
+// moveBack(){
+//   this.currentLocation -= 1;

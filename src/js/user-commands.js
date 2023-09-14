@@ -1,5 +1,14 @@
 import { printDetailedDescription, printGeneric, printHint } from "./../index.js";
-import { handleLookForItem, handleUnlockDoor, handleUseDoor, handlePullLever, handleOpenChest, handleAttack, handleUseItem } from "./interactions.js";
+import {
+  handleLookForItem,
+  handleUnlockDoor,
+  handleUseDoor,
+  handlePullLever,
+  handleOpenChest,
+  handleAttack,
+  handleUseItem,
+  handleNewGame,
+} from "./interactions.js";
 // !!!!!!!!! TAKE OUT AFTER TESTING !!!!!!!!!!
 import Adventure from "./adventure.js";
 // !!!!!!!!! TAKE OUT AFTER TESTING !!!!!!!!!!
@@ -44,6 +53,9 @@ export function handleUserCommand(userInput) {
       break;
     case "attack":
       handleAttack();
+      break;
+    case "new game":
+      handleNewGame();
       break;
     // !!!!!!!!!!! DEV CHEAT START !!!!!!!!!
     case "room 3":

@@ -38,10 +38,10 @@ export default class Dungeon {
       },
       4: {
         description: `It's dark in here. You find your heart beating much faster. A vicious breath echoes through the dark room, you  `,
-        detailedDescription: "Fee-fi-fo-fum, I smell the blood of an Englishman; Be he alive, or be he dead, I'll grind his bones to make my bread.",
+        detailedDescription: `Fee-fi-fo-fum, I smell the blood of an Englishman; Be he alive, or be he dead, I'll grind his bones to make my bread. <span class="olive">There's a monster, and it's blocking the exit!</span>`,
         items: [],
         hint: "look around, attack, use [item], use door",
-        doorAccessible: true,
+        doorAccessible: false,
         doorLocked: false,
         doors: {},
         battle: {

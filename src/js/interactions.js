@@ -1,6 +1,7 @@
 import Adventure from "./adventure.js";
-import { printGeneric, printInventory, printPlayerHealth } from "../index.js";
+import { printGeneric, printInventory, printPlayerHealth, resetDisplay } from "../index.js";
 
+// Handle grab item and check that item exists
 export function handleLookForItem(thatItem) {
   if (Adventure.getPlayerLocation().items.includes("treasure chest") && thatItem === "treasure chest") {
     printGeneric(`The <span class="yellow">treasure chest</span> is too heavy to carry around.`);
@@ -17,6 +18,7 @@ export function handleLookForItem(thatItem) {
   }
 }
 
+// Handle unlock door command
 export function handleUnlockDoor() {
   if (
     (Adventure.getPlayerLocation().doorLocked && Adventure.player.inventory.includes("brass key")) ||
@@ -32,10 +34,12 @@ export function handleUnlockDoor() {
   }
 }
 
-// Handle
+// Handle moving to next room
 export function handleUseDoor() {
   if (Adventure.getPlayerLocation().doorLocked) {
     printGeneric(`The door is locked, you might want to <span class="yellow">unlock</span> the door first.`);
+  } else if (!Adventure.getPlayerLocation().doorAccessible && Adventure.player.currentLocation === 4) {
+    printGeneric(`The monster blocks your path to the door.`);
   } else if (!Adventure.getPlayerLocation().doorAccessible) {
     printGeneric(`You find it's too difficult to open this door with all the water in the room.`);
   } else {
@@ -43,9 +47,11 @@ export function handleUseDoor() {
     printGeneric(`You open the door and walk through.`);
     // Introduce next room:
     printGeneric(Adventure.getPlayerLocation().description);
+    // Check if player has won:
   }
 }
 
+// Handle pull lever
 export function handlePullLever() {
   if (Adventure.getPlayerLocation().items.includes("lever")) {
     Adventure.getPlayerLocation().items.pop();
@@ -60,6 +66,7 @@ export function handlePullLever() {
   }
 }
 
+// Handle open treasure chest
 export function handleOpenChest() {
   if (Adventure.getPlayerLocation().items.includes("treasure chest") && Adventure.player.inventory.includes("rusty sword")) {
     printGeneric(
@@ -86,30 +93,30 @@ export function handleAttack() {
     return null;
   }
 
-  // randomly return either 0 or 1
+  // Randomly return either 0 or 1
   let chance = rollForChance();
   let string;
   let damage = Math.floor(Math.random() * 2) + 1;
 
-  // player attack
+  // Player attack
   if (chance) {
     // if 1, attack hits
     Adventure.getPlayerLocation().battle.monsterHealth -= damage;
-    string = `You hit the monster with your rusty sword for ${damage} damage!`;
+    string = `You hit the monster with your rusty sword for <span class="red">${damage} damage</span>!`;
   } else {
     // if 0, attack misses
-    string = "Your attack misses!";
+    string = `Your attack <span class="miss">misses</span>!`;
   }
 
-  // monster attacks
+  // Monster attacks
   chance = rollForChance();
   if (chance) {
     damage = Math.floor(Math.random() * 3) + 1;
     Adventure.getPlayerLocation().battle.playerHealth -= damage;
     printPlayerHealth(Adventure.getPlayerLocation().battle.playerHealth);
-    string += ` In retaliation, the monster hits you for ${damage} damage!`;
+    string += ` In retaliation, the monster hits you for <span class="red">${damage} damage</span>!`;
   } else {
-    string += " The monster's attack misses!";
+    string += ` The monster's attack <span class="miss">misses</span>!`;
   }
 
   printGeneric(string);
@@ -117,8 +124,8 @@ export function handleAttack() {
   handleWinOrLose();
 }
 
-// handle checking if player or monster has been defeated
-// if the player is defeated while the armor is in their inventory, give the player a second chance
+// Handle checking if player or monster has been defeated
+// If the player is defeated while the armor is in their inventory, give the player a second chance
 function handleWinOrLose() {
   let hasArmor = Adventure.player.inventory.includes("suit of armor");
   if (hasArmor && Adventure.getPlayerLocation().battle.playerHealth <= 0) {
@@ -130,7 +137,7 @@ function handleWinOrLose() {
     );
   } else if (Adventure.getPlayerLocation().battle.playerHealth <= 0) {
     printGeneric("The monster lands a fatal blow. Your strength leaves you. The Dungeon has won.");
-    printGeneric("<h4>Game Over</h4>");
+    printGeneric("<h4 class='red'>Game Over</h4>");
     // ! Display some kind of reset button?
   } else if (Adventure.getPlayerLocation().battle.monsterHealth <= 0) {
     Adventure.getPlayerLocation().doorAccessible = true;
@@ -138,6 +145,7 @@ function handleWinOrLose() {
   }
 }
 
+// Handle use item command
 export function handleUseItem(item) {
   if (Adventure.player.inventory.includes(item)) {
     if (item === "sand" && !(Adventure.player.currentLocation === 4)) {
@@ -165,4 +173,10 @@ export function handleUseItem(item) {
   } else {
     printGeneric(`Wait a second, you don't have ${item}.`);
   }
+}
+
+// Handle new game command, resets game and display
+export function handleNewGame() {
+  Adventure.newGame();
+  resetDisplay();
 }

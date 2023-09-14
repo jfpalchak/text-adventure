@@ -19,29 +19,40 @@ export function printInventory(currentInventory) {
   outputInventory.append(inventory);
 }
 
-// Print user health
+// Print player's current health
 export function printPlayerHealth(healthPoints) {
   const outputHealth = document.querySelector(".player-health");
-  outputHealth.innerText = null;
-  outputHealth.innerText = healthPoints;
+  outputHealth.innerHTML = null;
+  if (healthPoints <= 2) {
+    healthPoints = `<span class="red">${healthPoints}</span>`;
+  }
+  outputHealth.innerHTML = healthPoints;
 }
 
 // Print output messages
 export function printGeneric(text) {
   let pTag = document.createElement("p");
   pTag.innerHTML = text;
-  // document.getElementById("anchor").append(pTag);
-  // document.getElementById("scroller").append(pTag);
   const interactionOutput = document.querySelector(".display-to-user");
   interactionOutput.append(pTag);
   // pTag.setAttribute("class", "typewriter"); //// For the typewriter effect
   interactionOutput.scrollTop = interactionOutput.scrollHeight;
 }
 
+// print command hints for the player
 export function printHint() {
   let pTag = document.createElement("p");
   pTag.append(Adventure.getPlayerLocation().hint);
   document.querySelector(".hint-output").append(pTag);
+}
+
+// resets output display
+export function resetDisplay() {
+  document.querySelector(".display-to-user").innerHTML = null;
+  document.querySelector(".hint-output").innerHTML = null;
+  document.querySelector(".inventory").innerHTML = "INVENTORY: ";
+  printGeneric(Adventure.getPlayerLocation().description);
+  printPlayerHealth(4);
 }
 
 // User Interface Logic
@@ -49,6 +60,7 @@ function userInputSubmissionHandler(event) {
   event.preventDefault();
   let userInput = document.getElementById("player-entered-text").value.toLowerCase().trim();
   document.getElementById("player-entered-text").value = null;
+  document.querySelector(".hint-output").innerHTML = null;
 
   // Print user input to DOM
   printGeneric(`<span class="user-input"> > ${userInput}</span>`);
