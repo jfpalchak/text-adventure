@@ -18,7 +18,6 @@ export function parseUserInput(userInput) {
   let inputArray = userInput.split(" ");
   inputArray.shift();
   let targetObject = inputArray.join(" ");
-  // return [command, targetObject];
   return targetObject;
 }
 
@@ -66,6 +65,9 @@ export function handleUserCommand(userInput) {
       break;
     case "kill player":
       Adventure.dungeon.rooms[4].battle.playerHealth = 1;
+      break;
+    case "kill monster":
+      Adventure.dungeon.rooms[4].battle.monsterHealth = 1;
       break;
     // !!!!!!!!!!! DEV CHEAT END !!!!!!!!!!!
     default:

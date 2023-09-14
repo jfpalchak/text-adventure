@@ -51,7 +51,7 @@ export default class Dungeon {
       },
       5: {
         description:
-          "Tired, you leave the monster behind. There is a ray of light from above, illuminating a rope ladder just within reach. A way out. You've defeated the Dungeon!",
+          "Tired, you leave the monster behind. There is a ray of light from above, illuminating a rope ladder just within reach. A way out.",
         winFlag: true,
       },
     };

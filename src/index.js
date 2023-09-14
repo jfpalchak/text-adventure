@@ -63,16 +63,29 @@ function userInputSubmissionHandler(event) {
   document.querySelector(".hint-output").innerHTML = null;
 
   // Print user input to DOM
-  printGeneric(`<span class="user-input"> > ${userInput}</span>`);
+  printGeneric(`<span class="white">></span> <span class="user-input">${userInput}</span>`);
 
   // Method call to pass in user's 'userInput' to interact with room
   handleUserCommand(userInput);
 }
 
+function greetPlayer() {
+  printGeneric(`Welcome to <span class="green">Dungeon Adventure</span>!`);
+  printGeneric(`Throughout the game, you can use simple commands to navigate and interact with the world:`);
+  printGeneric(
+    `<div class="how-to">
+    > <span class="gray">look around</span><br/>> <span class="gray">grab [object]</span><br/>> <span class="gray">use [object]</span>
+    <br/>> <span class="gray">use door</span><br/>> <span class="gray">unlock door</span><br/>> <span class="gray">open [object]</span>
+    <br/>> <span class="gray">pull [object]</span><br/>> <span class="gray">attack</span>
+    </div>`
+  );
+  printGeneric(`If you want help figuring out which commands to use in particular room, enter '<span class="yellow">give hint</span>'.`);
+  printGeneric(`Enter '<span class="green">new game</span>' to begin!`);
+}
+
 window.addEventListener("load", function () {
-  Adventure.newGame();
-  printGeneric(Adventure.getPlayerLocation().description);
-  printPlayerHealth(4);
+  greetPlayer();
+
   // Listen for player command input:
   document.querySelector(".user-input").addEventListener("submit", userInputSubmissionHandler);
 });

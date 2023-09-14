@@ -47,6 +47,9 @@ export function handleUseDoor() {
     printGeneric(`You open the door and walk through.`);
     // Introduce next room:
     printGeneric(Adventure.getPlayerLocation().description);
+    if (Adventure.getPlayerLocation().winFlag) {
+      printGeneric("<h4 class='olive'>You've Defeated the Dungeon!</h4>");
+    }
     // Check if player has won:
   }
 }
@@ -59,6 +62,8 @@ export function handlePullLever() {
     printGeneric(
       `With effort, you pull the lever down. You hear a click behind the door ahead, and the sounds of a mechanism turning. The water in the room begins to drain, and by your feet you see a beautiful <span class="yellow">suit of armor</span>.`
     );
+    Adventure.getPlayerLocation().detailedDescription =
+      "The water has drained from the room, though your boots are still soaked through. It might be possible to open the door, now.";
   } else if (Adventure.player.currentLocation === 2) {
     printGeneric(`You've already pulled the lever.`);
   } else {
@@ -179,4 +184,5 @@ export function handleUseItem(item) {
 export function handleNewGame() {
   Adventure.newGame();
   resetDisplay();
+  printPlayerHealth(4);
 }

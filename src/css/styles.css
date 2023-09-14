@@ -9,7 +9,7 @@ body {
   height: 100%;
   width: 60%;
   margin: auto;
-  margin-top: 150px;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,7 +22,7 @@ body {
 }
 
 .display-to-user {
-  height: 300px;
+  height: 375px;
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -49,8 +49,8 @@ h1 {
 }
 
 h3 {
-  color: #8899a6;
-  text-shadow: red 1px 0 18px;
+  color: rgb(136, 153, 166, 1);
+  text-shadow: rgba(255, 0, 0, 1) 1px 0 18px;
   text-align: center;
   transition: all 3s;
   animation: fadeIn 1s step-end;
@@ -58,11 +58,15 @@ h3 {
 
 @keyframes fadeIn {
   0% {
-    opacity: 0;
+    color: rgb(136, 153, 166, 0.3);
+    text-shadow: rgba(255, 0, 0, 0.1) 1px 0 18px;
+    /* opacity: 0; */
     transform: scale(1);
   }
   100% {
-    opacity: 1;
+    /* opacity: 1; */
+    color: rgb(136, 153, 166, 1);
+    text-shadow: rgba(255, 0, 0, 1) 1px 0 18px;
     transform: scale(1.5);
   }
 }
@@ -81,6 +85,7 @@ input#player-entered-text {
   border: none;
   border-bottom: 2px solid black;
   text-align: center;
+  caret-color: white;
 }
 
 .user-input {
@@ -104,6 +109,14 @@ input#player-entered-text {
 
 .yellow {
   color: rgb(233, 194, 3);
+}
+
+.gray {
+  color: #8899a6;
+}
+
+.green {
+  color: green;
 }
 
 .red {
@@ -132,19 +145,17 @@ input#player-entered-text {
   transform: translateY(5.5px);
 }
 
-/* TYPE WRITER EFFECT */
-
 /* .typewriter {
   color: #fff;
   overflow: hidden;
   white-space: nowrap;
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-/* padding: 20px;
+  margin: 0 auto; 
+  padding: 20px;
   animation: typing 3.5s steps(30, end);
-} */
+}
 
-/* The typing effect */
-/* @keyframes typing {
+
+@keyframes typing {
   from {
     width: 0;
   }
@@ -152,3 +163,14 @@ input#player-entered-text {
     width: 100%;
   }
 } */
+
+svg {
+  fill: white;
+  margin-right: 15px;
+  margin-bottom: 10px;
+}
+
+.health,
+.inventory {
+  margin: 15px;
+}
