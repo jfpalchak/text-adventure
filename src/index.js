@@ -11,13 +11,31 @@ export function printDetailedDescription() {
   printGeneric(Adventure.getPlayerLocation().detailedDescription);
 }
 
+// Print user inventory
+export function printInventory(currentInventory) {
+  let inventory = document.createElement("li");
+  inventory.innerHTML = currentInventory;
+  const outputInventory = document.querySelector(".inventory");
+  outputInventory.append(inventory);
+}
+
+// Print user health
+export function printPlayerHealth(healthPoints) {
+  const outputHealth = document.querySelector(".player-health");
+  outputHealth.innerText = null;
+  outputHealth.innerText = healthPoints;
+}
+
 // Print output messages
 export function printGeneric(text) {
   let pTag = document.createElement("p");
   pTag.innerHTML = text;
   // document.getElementById("anchor").append(pTag);
   // document.getElementById("scroller").append(pTag);
-  document.querySelector(".display-to-user").append(pTag);
+  const interactionOutput = document.querySelector(".display-to-user");
+  interactionOutput.append(pTag);
+  // pTag.setAttribute("class", "typewriter"); //// For the typewriter effect
+  interactionOutput.scrollTop = interactionOutput.scrollHeight;
 }
 
 export function printHint() {
@@ -42,6 +60,7 @@ function userInputSubmissionHandler(event) {
 window.addEventListener("load", function () {
   Adventure.newGame();
   printGeneric(Adventure.getPlayerLocation().description);
+  printPlayerHealth(4);
   // Listen for player command input:
   document.querySelector(".user-input").addEventListener("submit", userInputSubmissionHandler);
 });

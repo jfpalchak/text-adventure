@@ -2,7 +2,7 @@ body {
   background-color: #121212;
   color: white;
   font-size: 10px;
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
   /* background-image: url(https://img.freepik.com/free-photo/grunge-vintage-old-paper-background_1373-431.jpg?w=1480&t=st=1694650657~exp=1694651257~hmac=9d0e8b776ea6634c69a8f702a2ad8119bc2d22be66ae41fcef2512462064432d); */
 }
 
@@ -27,6 +27,7 @@ body {
 }
 
 .display-to-user {
+  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,21 +35,15 @@ body {
   text-align: center;
   /* overflow-anchor: none; */
   overflow-y: scroll;
-  height: 300px;
-  width: 70%;
   background-color: rgba(0, 0, 0, 0.641);
   border-radius: 10px;
-  }
-
-/* #scroller * {
-  overflow-anchor: none;
-  background-color: #6f737840;
+  /* scrollbar-width: none; */
+  overflow: hidden;
 }
 
-#anchor {
-  overflow-anchor: auto;
-  height: 1px;
-} */
+.display-to-user::-webkit-scrollbar-thumb {
+  background: transparent;
+}
 
 #player-entered-text {
   margin: auto;
@@ -68,11 +63,13 @@ input#player-entered-text {
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0);
+  /* caret-color: transparent; */
+  color: #8899a6;
   outline: none;
   border: none;
   border-bottom: 2px solid black;
   text-align: center;
-  color: white;
+  /* color: white; */
 }
 
 .user-input {
@@ -96,4 +93,43 @@ input#player-entered-text {
 
 .yellow {
   color: rgb(233, 194, 3);
+}
+
+.user-input {
+  color: #8899a6;
+}
+
+/* /// BUTTON CLICK EFFECT */
+.button-hint {
+  transition: all 1s;
+}
+
+.button-hint:hover {
+  transform: translateY(-3.5px);
+  box-shadow: 0px 3px 3px gold;
+}
+
+.button-hint:active {
+  transform: translateY(5.5px);
+}
+
+/* TYPE WRITER EFFECT */
+
+.typewriter {
+  color: #fff;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  padding: 20px;
+  animation: typing 3.5s steps(30, end);
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }

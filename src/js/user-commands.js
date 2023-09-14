@@ -1,5 +1,5 @@
 import { printDetailedDescription, printGeneric, printHint } from "./../index.js";
-import { lookForItem, handleUnlockDoor, handleUseDoor, handlePullLever, handleOpenChest, handleAttack } from "./interactions.js";
+import { handleLookForItem, handleUnlockDoor, handleUseDoor, handlePullLever, handleOpenChest, handleAttack, handleUseItem } from "./interactions.js";
 // !!!!!!!!! TAKE OUT AFTER TESTING !!!!!!!!!!
 import Adventure from "./adventure.js";
 // !!!!!!!!! TAKE OUT AFTER TESTING !!!!!!!!!!
@@ -15,7 +15,7 @@ export function parseUserInput(userInput) {
 
 // handleUserCommand for rooms: 1
 export function handleUserCommand(userInput) {
-  let item = parseUserInput(userInput);
+  let targetItem = parseUserInput(userInput);
 
   switch (userInput) {
     case "give hint":
@@ -24,14 +24,17 @@ export function handleUserCommand(userInput) {
     case "look around":
       printDetailedDescription();
       break;
-    case `grab ${item}`:
-      lookForItem(item);
+    case `grab ${targetItem}`:
+      handleLookForItem(targetItem);
       break;
     case "unlock door":
       handleUnlockDoor();
       break;
     case "use door":
       handleUseDoor();
+      break;
+    case `use ${targetItem}`:
+      handleUseItem(targetItem);
       break;
     case "pull lever":
       handlePullLever();
