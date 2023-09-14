@@ -29,9 +29,11 @@ Here is a list of commands available to the player:
 
 | Command               | Description                                            |
 | --------------------- | ------------------------------------------------------ |
+| `new game`            | Initialize, or reset, to the beginning of a new game.  |
 | `give hint`           | Receive a hint about your current situation.           |
 | `look around`         | Observe your surroundings and gather information.      |
 | `grab [item]`         | Collect items to aid your journey.                     |
+| `use [item]`          | Interact with an item in your inventory.               |
 | `unlock door`         | Attempt to unlock a locked door with a key.            |
 | `use door`            | Open a door and move to the next room.                 |
 | `pull lever`          | Pull a lever to trigger a mechanism or reveal secrets. |
@@ -85,4 +87,4 @@ $ npm run start
 
 MIT License
 
-Copyright (c) _date_ _Joey Palchak, Jonathan Cheng, Jeremy Josol, Onur Kaymak, Jake Elsberry_
+Copyright (c) _9/11/2023_ _Joey Palchak, Jonathan Cheng, Jeremy Josol, Onur Kaymak, Jake Elsberry_
