@@ -75,7 +75,7 @@ $ npm run start
 
 ### _Alternatively:_
 
-1. Go to the website and access the application directly via **[GitHub Pages](#link)**.
+1. Go to the website and access the application directly via **[GitHub Pages](https://jfpalchak.github.io/text-adventure/)**.
 
 ## Known Bugs
 
