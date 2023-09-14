@@ -79,7 +79,7 @@ function greetPlayer() {
     <br/>> <span class="gray">pull [object]</span><br/>> <span class="gray">attack</span>
     </div>`
   );
-  printGeneric(`If you want help figuring out which commands to use in particular room, enter '<span class="yellow">give hint</span>'.`);
+  printGeneric(`If you want help figuring out which commands to use in a particular room, enter '<span class="yellow">give hint</span>'.`);
   printGeneric(`Enter '<span class="green">new game</span>' to begin!`);
 }
 

@@ -174,3 +174,7 @@ svg {
 .inventory {
   margin: 15px;
 }
+
+p {
+  padding: 0 3px 0px 3px;
+}
