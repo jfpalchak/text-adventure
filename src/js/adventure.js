@@ -1,5 +1,5 @@
-import Character from './character.js';
-import Dungeon from './dungeon.js';
+import Character from "./character.js";
+import Dungeon from "./dungeon.js";
 
 export default class Adventure {
   static newGame() {

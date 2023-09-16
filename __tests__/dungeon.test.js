@@ -1,11 +1,9 @@
-import Dungeon from './../src/js/dungeon.js';
+import Dungeon from "./../src/js/dungeon.js";
 
-describe('Dungeon', () => {
+describe("Dungeon", () => {
   // Test 1 pass
-    test('should create an instance of Dungeon class', () => {
-      let newDungeon = new Dungeon("Player");
-      expect(newDungeon).toEqual("Player");
-      
-    });
-
+  test("should create an instance of Dungeon class", () => {
+    let newDungeon = new Dungeon();
+    expect(newDungeon.rooms).toBeInstanceOf(Object);
   });
+});

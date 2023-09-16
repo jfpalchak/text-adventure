@@ -11,7 +11,7 @@
     "build": "webpack --mode=development",
     "start": "npm run build && webpack-dev-server --open --mode=development",
     "lint": "eslint src --ext .js",
-    "test": "jest --coverage",
+    "test": "jest --coverage --colors",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },

@@ -56,12 +56,12 @@ export default class Dungeon {
       },
     };
   }
-  addRoom(roomId, description, details, items, hint) {
-    this.rooms[roomId] = {
-      description,
-      details,
-      items,
-      hint,
-    };
-  }
+  // addRoom(roomId, description, details, items, hint) {
+  //   this.rooms[roomId] = {
+  //     description,
+  //     details,
+  //     items,
+  //     hint,
+  //   };
+  // }
 }
